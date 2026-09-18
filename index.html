@@ -61,11 +61,11 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .logo-img {
-            height: 100px; 
+            height: 85px; 
             width: auto;
             object-fit: contain;
         }
@@ -76,7 +76,7 @@
             border: 1px solid #BFDBFE;
             border-radius: var(--radius-sm);
             padding: 12px 14px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             width: 100%;
             text-align: left;
             box-shadow: var(--shadow-sm);
@@ -111,6 +111,72 @@
             font-weight: bold;
             position: absolute;
             left: 0;
+        }
+
+        /* Premium Kiçik Statistika Paneli (Təlimatın Altında) */
+        .premium-stats-banner {
+            background: var(--white);
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 12px;
+        }
+
+        .premium-stats-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-align: left;
+        }
+
+        .premium-stats-icon {
+            font-size: 1.1rem;
+        }
+
+        .premium-stats-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .premium-stats-live {
+            font-size: 0.65rem;
+            color: var(--success);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--success);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .premium-stats-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
         }
 
         /* Əsas Konteyner */
@@ -220,75 +286,6 @@
             flex-shrink: 0;
         }
 
-        /* Kənarda (Sağ Aşağıda) Kiçik Üzən Statistika Modalı */
-        .floating-stats-modal {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--white);
-            border: 1px solid #E2E8F0;
-            padding: 10px 14px;
-            border-radius: var(--radius-sm);
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 90;
-            animation: slideUp 0.4s ease;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .floating-stats-modal .stat-value {
-            font-size: 1.25rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-        }
-
-        .floating-stats-modal .stat-info {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .floating-stats-modal .stat-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .floating-stats-modal .stat-live {
-            font-size: 0.65rem;
-            color: var(--success);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .live-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--success);
-            border-radius: 50%;
-            display: inline-block;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-        }
-
         /* Çərçivəsiz, Minimalist Yüklənir Overlay Modalı */
         #loadingOverlay {
             position: fixed;
@@ -345,15 +342,6 @@
         <div class="loading-text" id="loadingText">Kod yoxlanılır, zəhmət olmasa gözləyin...</div>
     </div>
 
-    <!-- Kənarda Kiçik Üzən Statistika Modalı -->
-    <div class="floating-stats-modal">
-        <div class="stat-value" id="totalDownloadsCount">0</div>
-        <div class="stat-info">
-            <span class="stat-label">Yüklənən Kitab</span>
-            <span class="stat-live"><span class="live-dot"></span> Canlı</span>
-        </div>
-    </div>
-
     <div class="header">
         <div class="logo-container">
             <img src="logo.jpg" alt="Gunel's Story Logo" class="logo-img" onerror="this.style.display='none'">
@@ -367,6 +355,18 @@
                 <li>Hər kod yalnız <b>bir dəfə</b> istifadə oluna bilər.</li>
                 <li>Təsdiqdən sonra e-kitab avtomatik yüklənəcək.</li>
             </ul>
+        </div>
+
+        <!-- Təlimatın Altında Premium Statistika Banneri -->
+        <div class="premium-stats-banner">
+            <div class="premium-stats-left">
+                <span class="premium-stats-icon">📊</span>
+                <div>
+                    <div class="premium-stats-title">Yüklənən Kitab Sayı</div>
+                    <div class="premium-stats-live"><span class="live-dot"></span> Canlı statistika</div>
+                </div>
+            </div>
+            <div class="premium-stats-value" id="totalDownloadsCount">0</div>
         </div>
     </div>
 
@@ -479,7 +479,6 @@
             }
         }
 
-        document.getElementById("userCode").getElementById("userCode")?.addEventListener?.(...); // kept clean below
         document.getElementById("userCode").addEventListener("keypress", function(e) {
             if (e.key === "Enter") {
                 verifyAndDownload();
