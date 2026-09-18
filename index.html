@@ -65,7 +65,7 @@
         }
 
         .logo-img {
-            height: 85px; 
+            height: 100px; 
             width: auto;
             object-fit: contain;
         }
@@ -360,9 +360,9 @@
         <!-- Təlimatın Altında Premium Statistika Banneri -->
         <div class="premium-stats-banner">
             <div class="premium-stats-left">
-                
+              
                 <div>
-                    <div class="premium-stats-title">Portaldan istifadə edənlər</div>
+                    <div class="premium-stats-title">Portaldan istifadə edənlər...</div>
                     <div class="premium-stats-live"><span class="live-dot"></span> Canlı statistika</div>
                 </div>
             </div>
@@ -404,7 +404,7 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // Real-time Statistika Dinləyicisi
+        /* Real-time Statistika Dinləyicisi */
         db.collection("stats").doc("portal").onSnapshot((doc) => {
             const countElem = document.getElementById("totalDownloadsCount");
             if (doc.exists) {
@@ -454,7 +454,7 @@
 
                     await docRef.update({ used: true });
 
-                    // Sayğacı 1 vahid artırırıq
+                    /* Statistika sayğacını (totalDownloads) 1 vahid artırırıq */
                     await db.collection("stats").doc("portal").update({
                         totalDownloads: firebase.firestore.FieldValue.increment(1)
                     });
