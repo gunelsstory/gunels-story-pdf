@@ -1,489 +1,395 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gunel's Story - E-Kitab Yükləmə Portalı</title>
-    <!-- Rəngli PDF Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23EF4444%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22Plus Jakarta Sans, sans-serif%22>PDF</text></svg>">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunel's Story - E-Kitab Yükləmə Portalı</title>
+    <!-- Rəngli PDF Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23EF4444%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22Plus Jakarta Sans, sans-serif%22>PDF</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg-base: #F8FAFC;
-            --primary-lux: #0F172A;
-            --text-main: #0F172A;
-            --text-muted: #64748B;
-            --white: #ffffff;
-            --success: #10B981;
-            --danger: #EF4444;
-            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            --radius-lg: 16px;
-            --radius-sm: 8px;
-            --transition: all .25s ease-in-out;
-        }
+    <style>
+        :root {
+            --bg-base: #F8FAFC;
+            --primary-lux: #0F172A;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --white: #ffffff;
+            --success: #10B981;
+            --danger: #EF4444;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+            --transition: all .25s ease-in-out;
+        }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
 
-        body {
-            background-color: var(--bg-base);
-            color: var(--text-main);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 16px 12px 16px;
-            overflow-y: auto;
-        }
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 16px 12px 16px;
+            overflow-y: auto;
+        }
 
-        .header {
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        .header {
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-        /* Loqo */
-        .logo-container {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
+        /* Loqo */
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
 
-        .logo-img {
-            height: 100px; 
-            width: auto;
-            object-fit: contain;
-        }
+        .logo-img {
+            height: 100px; 
+            width: auto;
+            object-fit: contain;
+        }
 
-        /* Məlumat Xarakterli Bildiriş Modalı */
-        .info-card {
-            background: linear-gradient(135deg, #EFF6FF 0%, #F1F5F9 100%);
-            border: 1px solid #BFDBFE;
-            border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            margin-bottom: 8px;
-            width: 100%;
-            text-align: left;
-            box-shadow: var(--shadow-sm);
-        }
+        /* Məlumat Xarakterli Bildiriş Modalı */
+        .info-card {
+            background: linear-gradient(135deg, #EFF6FF 0%, #F1F5F9 100%);
+            border: 1px solid #BFDBFE;
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            width: 100%;
+            text-align: left;
+            box-shadow: var(--shadow-sm);
+        }
 
-        .info-card h4 {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: #1D4ED8;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+        .info-card h4 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #1D4ED8;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-        .info-card ul {
-            list-style: none;
-            font-size: 0.76rem;
-            color: var(--text-muted);
-            line-height: 1.35;
-        }
+        .info-card ul {
+            list-style: none;
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
 
-        .info-card li {
-            margin-bottom: 3px;
-            position: relative;
-            padding-left: 12px;
-        }
+        .info-card li {
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 12px;
+        }
 
-        .info-card li::before {
-            content: "•";
-            color: #3B82F6;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
+        .info-card li::before {
+            content: "•";
+            color: #3B82F6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
 
-        /* Premium Kiçik Statistika Paneli (Təlimatın Altında) */
-        .premium-stats-banner {
-            background: var(--white);
-            border: 1px solid #E2E8F0;
-            border-radius: var(--radius-sm);
-            padding: 10px 14px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 12px;
-        }
+        /* Əsas Konteyner */
+        .container {
+            background: var(--white);
+            border: 1px solid #E2E8F0;
+            padding: 24px 20px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            margin: auto 0;
+        }
 
-        .premium-stats-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-align: left;
-        }
+        h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-main);
+            letter-spacing: -0.025em;
+        }
 
-        .premium-stats-icon {
-            font-size: 1.1rem;
-        }
+        p {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
 
-        .premium-stats-title {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
+        /* Animasiyalı Rəngarəng Çərçivə */
+        .input-group {
+            position: relative;
+            margin-bottom: 16px;
+            border-radius: 10px;
+            padding: 2px;
+            background: linear-gradient(270deg, #6366F1, #EC4899, #F59E0B, #6366F1);
+            background-size: 300% 300%;
+            animation: borderGlow 4s ease infinite;
+        }
 
-        .premium-stats-live {
-            font-size: 0.65rem;
-            color: var(--success);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-        .live-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--success);
-            border-radius: 50%;
-            display: inline-block;
-            animation: pulse 1.5s infinite;
-        }
+        input {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--white);
+            border: none;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            text-align: center;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
 
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-        }
+        input:focus {
+            outline: none;
+            background: #FFFBEB;
+        }
 
-        .premium-stats-value {
-            font-size: 1.25rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-        }
+        /* Yükləmə Düyməsi */
+        button {
+            background: linear-gradient(135deg, #6366F1 0%, #EC4899 50%, #F59E0B 100%);
+            background-size: 200% auto;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            width: 100%;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        }
 
-        /* Əsas Konteyner */
-        .container {
-            background: var(--white);
-            border: 1px solid #E2E8F0;
-            padding: 24px 20px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            margin: auto 0;
-        }
+        button:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+        }
 
-        h1 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--text-main);
-            letter-spacing: -0.025em;
-        }
+        button:active {
+            transform: translateY(0);
+        }
 
-        p {
-            color: var(--text-muted);
-            font-size: 0.82rem;
-            margin-bottom: 18px;
-            line-height: 1.4;
-        }
+        #message {
+            margin-top: 12px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            min-height: 18px;
+        }
 
-        /* Animasiyalı Rəngarəng Çərçivə */
-        .input-group {
-            position: relative;
-            margin-bottom: 16px;
-            border-radius: 10px;
-            padding: 2px;
-            background: linear-gradient(270deg, #6366F1, #EC4899, #F59E0B, #6366F1);
-            background-size: 300% 300%;
-            animation: borderGlow 4s ease infinite;
-        }
+        /* Sabit Altbilgi */
+        .footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
 
-        @keyframes borderGlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        /* Çərçivəsiz, Minimalist Yüklənir Overlay Modalı */
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            gap: 16px;
+            animation: fadeIn 0.3s ease;
+        }
 
-        input {
-            width: 100%;
-            padding: 10px 14px;
-            background: var(--white);
-            border: none;
-            border-radius: 8px;
-            color: var(--text-main);
-            font-size: 0.95rem;
-            text-align: center;
-            letter-spacing: 2px;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: var(--transition);
-        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-        input:focus {
-            outline: none;
-            background: #FFFBEB;
-        }
+        .spinner {
+            width: 44px;
+            height: 44px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-top: 3px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
 
-        /* Yükləmə Düyməsi */
-        button {
-            background: linear-gradient(135deg, #6366F1 0%, #EC4899 50%, #F59E0B 100%);
-            background-size: 200% auto;
-            color: white;
-            border: none;
-            padding: 12px 16px;
-            width: 100%;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 700;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
-        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
-        button:hover {
-            background-position: right center;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        #message {
-            margin-top: 12px;
-            font-size: 0.82rem;
-            font-weight: 500;
-            min-height: 18px;
-        }
-
-        /* Sabit Altbilgi */
-        .footer {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            margin-top: 8px;
-            flex-shrink: 0;
-        }
-
-        /* Çərçivəsiz, Minimalist Yüklənir Overlay Modalı */
-        #loadingOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.45);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            gap: 16px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .spinner {
-            width: 44px;
-            height: 44px;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            border-top: 3px solid #ffffff;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .loading-text {
-            font-weight: 600;
-            color: #ffffff;
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
-            text-align: center;
-            padding: 0 20px;
-        }
-    </style>
+        .loading-text {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            text-align: center;
+            padding: 0 20px;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Çərçivəsiz Minimalist Yüklənir Overlay -->
-    <div id="loadingOverlay">
-        <div class="spinner"></div>
-        <div class="loading-text" id="loadingText">Kod yoxlanılır, zəhmət olmasa gözləyin...</div>
-    </div>
+    <!-- Çərçivəsiz Minimalist Yüklənir Overlay -->
+    <div id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text" id="loadingText">Kod yoxlanılır, zəhmət olmasa gözləyin...</div>
+    </div>
 
-    <div class="header">
-        <div class="logo-container">
-            <img src="logo.jpg" alt="Gunel's Story Logo" class="logo-img" onerror="this.style.display='none'">
-        </div>
+    <div class="header">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Gunel's Story Logo" class="logo-img" onerror="this.style.display='none'">
+        </div>
 
-        <!-- Məlumat Xarakterli Bildiriş Modalı -->
-        <div class="info-card">
-            <h4>Yükləmə portalı necə işləyir?</h4>
-            <ul>
-                <li>WhatsApp vasitəsilə əldə etdiyiniz unikal kodu daxil edin.</li>
-                <li>Hər kod yalnız <b>bir dəfə</b> istifadə oluna bilər.</li>
-                <li>Təsdiqdən sonra e-kitab avtomatik yüklənəcək.</li>
-            </ul>
-        </div>
+        <!-- Məlumat Xarakterli Bildiriş Modalı -->
+        <div class="info-card">
+            <h4>Yükləmə portalı necə işləyir?</h4>
+            <ul>
+                <li>WhatsApp vasitəsilə əldə etdiyiniz unikal kodu daxil edin.</li>
+                <li>Hər kod yalnız <b>bir dəfə</b> istifadə oluna bilər.</li>
+                <li>Təsdiqdən sonra e-kitab avtomatik yüklənəcək.</li>
+            </ul>
+        </div>
+    </div>
 
-        <!-- Təlimatın Altında Premium Statistika Banneri -->
-        <div class="premium-stats-banner">
-            <div class="premium-stats-left">
-              
-                <div>
-                    <div class="premium-stats-title">Portaldan istifadə edənlər...</div>
-                    <div class="premium-stats-live"><span class="live-dot"></span> Canlı statistika</div>
-                </div>
-            </div>
-            <div class="premium-stats-value" id="totalDownloadsCount">0</div>
-        </div>
-    </div>
+    <div class="container">
+        <h1>E-Kitab yüklə</h1>
+        <p>WhatsApp vasitəsilə əldə etdiyiniz unikal birdəfəlik giriş kodunu aşağıya daxil edin.</p>
+        
+        <div class="input-group">
+            <input type="text" id="userCode" placeholder="GNL-XXXX">
+        </div>
+        
+        <button onclick="verifyAndDownload()" id="downloadBtn">Yükləməni Başlat</button>
+        <div id="message"></div>
+    </div>
 
-    <div class="container">
-        <h1>E-Kitab yüklə</h1>
-        <p>WhatsApp vasitəsilə əldə etdiyiniz unikal birdəfəlik giriş kodunu aşağıya daxil edin.</p>
-        
-        <div class="input-group">
-            <input type="text" id="userCode" placeholder="GNL-XXXX">
-        </div>
-        
-        <button onclick="verifyAndDownload()" id="downloadBtn">Yükləməni Başlat</button>
-        <div id="message"></div>
-    </div>
+    <div class="footer">
+        &copy; 2026 Gunel's Story. Bütün hüquqlar qorunur.
+    </div>
 
-    <div class="footer">
-        &copy; 2026 Gunel's Story. Bütün hüquqlar qorunur.
-    </div>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
+            authDomain: "gunelsstory-6d3a9.firebaseapp.com",
+            projectId: "gunelsstory-6d3a9",
+            storageBucket: "gunelsstory-6d3a9.firebasestorage.app",
+            messagingSenderId: "903174908342",
+            appId: "1:903174908342:web:f73871214550442e553917",
+            measurementId: "G-5Q48RSFFH9"
+        };
 
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
-            authDomain: "gunelsstory-6d3a9.firebaseapp.com",
-            projectId: "gunelsstory-6d3a9",
-            storageBucket: "gunelsstory-6d3a9.firebasestorage.app",
-            messagingSenderId: "903174908342",
-            appId: "1:903174908342:web:f73871214550442e553917",
-            measurementId: "G-5Q48RSFFH9"
-        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+        async function verifyAndDownload() {
+            const inputField = document.getElementById("userCode");
+            const messageDiv = document.getElementById("message");
+            const btn = document.getElementById("downloadBtn");
+            const overlay = document.getElementById("loadingOverlay");
+            const loadingText = document.getElementById("loadingText");
+            const code = inputField.value.trim().toUpperCase();
 
-        /* Real-time Statistika Dinləyicisi */
-        db.collection("stats").doc("portal").onSnapshot((doc) => {
-            const countElem = document.getElementById("totalDownloadsCount");
-            if (doc.exists) {
-                countElem.textContent = doc.data().totalDownloads || 0;
-            } else {
-                db.collection("stats").doc("portal").set({ totalDownloads: 0 });
-                countElem.textContent = "0";
-            }
-        });
+            if (!code) {
+                messageDiv.style.color = "var(--danger)";
+                messageDiv.textContent = "Zəhmət olmasa kodu daxil edin.";
+                return;
+            }
 
-        async function verifyAndDownload() {
-            const inputField = document.getElementById("userCode");
-            const messageDiv = document.getElementById("message");
-            const btn = document.getElementById("downloadBtn");
-            const overlay = document.getElementById("loadingOverlay");
-            const loadingText = document.getElementById("loadingText");
-            const code = inputField.value.trim().toUpperCase();
+            messageDiv.textContent = "";
+            btn.disabled = true;
+            
+            loadingText.textContent = "Kod yoxlanılır, zəhmət olmasa gözləyin...";
+            overlay.style.display = "flex";
 
-            if (!code) {
-                messageDiv.style.color = "var(--danger)";
-                messageDiv.textContent = "Zəhmət olmasa kodu daxil edin.";
-                return;
-            }
+            try {
+                const docRef = db.collection("codes").doc(code);
+                const docSnap = await docRef.get();
 
-            messageDiv.textContent = "";
-            btn.disabled = true;
-            
-            loadingText.textContent = "Kod yoxlanılır, zəhmət olmasa gözləyin...";
-            overlay.style.display = "flex";
+                if (docSnap.exists) {
+                    const data = docSnap.data();
+                    const isUsed = data.used || false;
+                    const downloadUrl = data.downloadUrl || data.link;
 
-            try {
-                const docRef = db.collection("codes").doc(code);
-                const docSnap = await docRef.get();
+                    if (isUsed) {
+                        overlay.style.display = "none";
+                        messageDiv.style.color = "var(--danger)";
+                        messageDiv.textContent = "Bu kod artıq istifadə olunub!";
+                        btn.disabled = false;
+                        return;
+                    }
 
-                if (docSnap.exists) {
-                    const data = docSnap.data();
-                    const isUsed = data.used || false;
-                    const downloadUrl = data.downloadUrl || data.link;
+                    await docRef.update({ used: true });
 
-                    if (isUsed) {
-                        overlay.style.display = "none";
-                        messageDiv.style.color = "var(--danger)";
-                        messageDiv.textContent = "Bu kod artıq istifadə olunub!";
-                        btn.disabled = false;
-                        return;
-                    }
+                    loadingText.textContent = "Kod təsdiqləndi! Yükləmə başlayır...";
 
-                    await docRef.update({ used: true });
+                    setTimeout(() => {
+                        window.location.href = downloadUrl;
+                    }, 1200);
 
-                    /* Statistika sayğacını (totalDownloads) 1 vahid artırırıq */
-                    await db.collection("stats").doc("portal").update({
-                        totalDownloads: firebase.firestore.FieldValue.increment(1)
-                    });
+                } else {
+                    overlay.style.display = "none";
+                    messageDiv.style.color = "var(--danger)";
+                    messageDiv.textContent = "Daxil etdiyiniz kod yanlışdır.";
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                overlay.style.display = "none";
+                messageDiv.style.color = "var(--danger)";
+                messageDiv.textContent = "Şəbəkə xətası baş verdi. Yenidən cəhd edin.";
+                btn.disabled = false;
+            }
+        }
 
-                    loadingText.textContent = "Kod təsdiqləndi! Yükləmə başlayır...";
-
-                    setTimeout(() => {
-                        window.location.href = downloadUrl;
-                    }, 1200);
-
-                } else {
-                    overlay.style.display = "none";
-                    messageDiv.style.color = "var(--danger)";
-                    messageDiv.textContent = "Daxil etdiyiniz kod yanlışdır.";
-                    btn.disabled = false;
-                }
-            } catch (error) {
-                overlay.style.display = "none";
-                messageDiv.style.color = "var(--danger)";
-                messageDiv.textContent = "Şəbəkə xətası baş verdi. Yenidən cəhd edin.";
-                btn.disabled = false;
-            }
-        }
-
-        document.getElementById("userCode").addEventListener("keypress", function(e) {
-            if (e.key === "Enter") {
-                verifyAndDownload();
-            }
-        });
-    </script>
+        document.getElementById("userCode").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                verifyAndDownload();
+            }
+        });
+    </script>
 </body>
-</html>
+</html> 
