@@ -38,17 +38,17 @@
         body {
             background-color: var(--bg-base);
             color: var(--text-main);
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 16px;
+            padding: 20px 16px 12px 16px;
+            overflow-y: auto;
         }
 
         .header {
             text-align: center;
-            margin-top: 12px;
             width: 100%;
             max-width: 400px;
             display: flex;
@@ -56,37 +56,37 @@
             align-items: center;
         }
 
-        /* Loqo (Kutudan çıxarıldı və daha çox böyüdüldü) */
+        /* Loqo */
         .logo-container {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .logo-img {
-            height: 120px; 
+            height: 100px; 
             width: auto;
             object-fit: contain;
         }
 
-        /* Məlumat Xarakterli Bildiriş Modalı (Mobil Uyğun) */
+        /* Məlumat Xarakterli Bildiriş Modalı */
         .info-card {
             background: linear-gradient(135deg, #EFF6FF 0%, #F1F5F9 100%);
             border: 1px solid #BFDBFE;
             border-radius: var(--radius-sm);
-            padding: 14px 16px;
-            margin-bottom: 20px;
+            padding: 12px 14px;
+            margin-bottom: 12px;
             width: 100%;
             text-align: left;
             box-shadow: var(--shadow-sm);
         }
 
         .info-card h4 {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 700;
             color: #1D4ED8;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -94,15 +94,15 @@
 
         .info-card ul {
             list-style: none;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.35;
         }
 
         .info-card li {
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             position: relative;
-            padding-left: 14px;
+            padding-left: 12px;
         }
 
         .info-card li::before {
@@ -117,7 +117,7 @@
         .container {
             background: var(--white);
             border: 1px solid #E2E8F0;
-            padding: 32px 24px;
+            padding: 24px 20px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
             width: 100%;
@@ -127,24 +127,24 @@
         }
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: var(--text-main);
             letter-spacing: -0.025em;
         }
 
         p {
             color: var(--text-muted);
-            font-size: 0.875rem;
-            margin-bottom: 24px;
-            line-height: 1.5;
+            font-size: 0.82rem;
+            margin-bottom: 18px;
+            line-height: 1.4;
         }
 
-        /* Animasiyalı Rəngarəng Çərçivə (Düymə ilə eyni rənglər) */
+        /* Animasiyalı Rəngarəng Çərçivə */
         .input-group {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             border-radius: 10px;
             padding: 2px;
             background: linear-gradient(270deg, #6366F1, #EC4899, #F59E0B, #6366F1);
@@ -160,12 +160,12 @@
 
         input {
             width: 100%;
-            padding: 12px 16px;
+            padding: 10px 14px;
             background: var(--white);
             border: none;
             border-radius: 8px;
             color: var(--text-main);
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-align: center;
             letter-spacing: 2px;
             font-weight: 600;
@@ -178,17 +178,17 @@
             background: #FFFBEB;
         }
 
-        /* Rəngarəng Yükləmə Düyməsi */
+        /* Yükləmə Düyməsi */
         button {
             background: linear-gradient(135deg, #6366F1 0%, #EC4899 50%, #F59E0B 100%);
             background-size: 200% auto;
             color: white;
             border: none;
-            padding: 14px 16px;
+            padding: 12px 16px;
             width: 100%;
             border-radius: var(--radius-sm);
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             transition: var(--transition);
             box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
@@ -205,58 +205,50 @@
         }
 
         #message {
-            margin-top: 16px;
-            font-size: 0.875rem;
+            margin-top: 12px;
+            font-size: 0.82rem;
             font-weight: 500;
-            min-height: 20px;
+            min-height: 18px;
         }
 
+        /* Sabit Altbilgi */
         .footer {
             text-align: center;
             color: var(--text-muted);
             font-size: 0.75rem;
-            margin-top: 16px;
+            margin-top: 8px;
+            flex-shrink: 0;
         }
 
-        /* Ekranı blurlayan və yüklənir göstərən Overlay Modalı */
+        /* Çərçivəsiz, Minimalist Yüklənir Overlay Modalı */
         #loadingOverlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             display: none;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 999;
-        }
-
-        .loading-modal {
-            background: white;
-            padding: 24px 32px;
-            border-radius: 16px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
+            gap: 16px;
             animation: fadeIn 0.3s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #E2E8F0;
-            border-top: 4px solid #EC4899;
+            width: 44px;
+            height: 44px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-top: 3px solid #ffffff;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
@@ -267,20 +259,21 @@
         }
 
         .loading-text {
-            font-weight: 700;
-            color: var(--primary-lux);
-            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            text-align: center;
+            padding: 0 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Yüklənir Bildiriş Overlay Modalı -->
+    <!-- Çərçivəsiz Minimalist Yüklənir Overlay -->
     <div id="loadingOverlay">
-        <div class="loading-modal">
-            <div class="spinner"></div>
-            <div class="loading-text" id="loadingText">Kod yoxlanılır, zəhmət olmasa gözləyin...</div>
-        </div>
+        <div class="spinner"></div>
+        <div class="loading-text" id="loadingText">Kod yoxlanılır, zəhmət olmasa gözləyin...</div>
     </div>
 
     <div class="header">
@@ -350,7 +343,6 @@
             messageDiv.textContent = "";
             btn.disabled = true;
             
-            // Blurlu overlay modalını göstər
             loadingText.textContent = "Kod yoxlanılır, zəhmət olmasa gözləyin...";
             overlay.style.display = "flex";
 
