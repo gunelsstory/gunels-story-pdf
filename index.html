@@ -38,7 +38,7 @@
         body {
             background-color: var(--bg-base);
             color: var(--text-main);
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -47,29 +47,10 @@
             overflow-y: auto;
         }
 
-        /* Əsas Layout Wrapper (Sol hissə və Sağ statistika üçün) */
-        .main-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            width: 100%;
-            max-width: 820px;
-            margin: auto 0;
-            flex-wrap: wrap;
-        }
-
-        .portal-column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 400px;
-        }
-
         .header {
             text-align: center;
             width: 100%;
+            max-width: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -84,7 +65,7 @@
         }
 
         .logo-img {
-            height: 90px; 
+            height: 100px; 
             width: auto;
             object-fit: contain;
         }
@@ -140,93 +121,9 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
             width: 100%;
+            max-width: 400px;
             text-align: center;
-        }
-
-        /* Sağ Tərəfdəki Statistika Paneli */
-        .stats-container {
-            background: var(--white);
-            border: 1px solid #E2E8F0;
-            padding: 24px 20px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            width: 100%;
-            max-width: 320px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .stats-container h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .stat-box {
-            background: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            border-radius: var(--radius-sm);
-            padding: 14px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 2px;
-        }
-
-        .stat-label {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .stat-live-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-size: 0.75rem;
-            color: var(--success);
-            font-weight: 600;
-            margin-top: -4px;
-        }
-
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--success);
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 0 rgba(16, 185, 129, 0.4);
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-            }
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
-            }
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-            }
+            margin: auto 0;
         }
 
         h1 {
@@ -323,6 +220,75 @@
             flex-shrink: 0;
         }
 
+        /* Kənarda (Sağ Aşağıda) Kiçik Üzən Statistika Modalı */
+        .floating-stats-modal {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--white);
+            border: 1px solid #E2E8F0;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 90;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .floating-stats-modal .stat-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .floating-stats-modal .stat-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .floating-stats-modal .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .floating-stats-modal .stat-live {
+            font-size: 0.65rem;
+            color: var(--success);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--success);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
         /* Çərçivəsiz, Minimalist Yüklənir Overlay Modalı */
         #loadingOverlay {
             position: fixed;
@@ -379,54 +345,41 @@
         <div class="loading-text" id="loadingText">Kod yoxlanılır, zəhmət olmasa gözləyin...</div>
     </div>
 
-    <div class="main-wrapper">
-        <!-- Sol tərəf / Əsas Portal Hissəsi -->
-        <div class="portal-column">
-            <div class="header">
-                <div class="logo-container">
-                    <img src="logo.jpg" alt="Gunel's Story Logo" class="logo-img" onerror="this.style.display='none'">
-                </div>
+    <!-- Kənarda Kiçik Üzən Statistika Modalı -->
+    <div class="floating-stats-modal">
+        <div class="stat-value" id="totalDownloadsCount">0</div>
+        <div class="stat-info">
+            <span class="stat-label">Yüklənən Kitab</span>
+            <span class="stat-live"><span class="live-dot"></span> Canlı</span>
+        </div>
+    </div>
 
-                <!-- Məlumat Xarakterli Bildiriş Modalı -->
-                <div class="info-card">
-                    <h4>Yükləmə portalı necə işləyir?</h4>
-                    <ul>
-                        <li>WhatsApp vasitəsilə əldə etdiyiniz unikal kodu daxil edin.</li>
-                        <li>Hər kod yalnız <b>bir dəfə</b> istifadə oluna bilər.</li>
-                        <li>Təsdiqdən sonra e-kitab avtomatik yüklənəcək.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="container">
-                <h1>E-Kitab yüklə</h1>
-                <p>WhatsApp vasitəsilə əldə etdiyiniz unikal birdəfəlik giriş kodunu aşağıya daxil edin.</p>
-                
-                <div class="input-group">
-                    <input type="text" id="userCode" placeholder="GNL-XXXX">
-                </div>
-                
-                <button onclick="verifyAndDownload()" id="downloadBtn">Yükləməni Başlat</button>
-                <div id="message"></div>
-            </div>
+    <div class="header">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Gunel's Story Logo" class="logo-img" onerror="this.style.display='none'">
         </div>
 
-        <!-- Sağ Tərəf: Real-time Statistika Paneli -->
-        <div class="stats-container">
-            <h3>📊 Portal Statistikası</h3>
-            <div class="stat-live-indicator">
-                <span class="live-dot"></span> Canlı yenilənir
-            </div>
-            
-            <div class="stat-box">
-                <div class="stat-value" id="totalDownloadsCount">0</div>
-                <div class="stat-label">Yüklənən Kitab / İstifadəçi Sayı</div>
-            </div>
-
-            <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0;">
-                Hər uğurlu kod daxil edilməsi və PDF açılması zamanı statistika avtomatik olaraq artır.
-            </p>
+        <!-- Məlumat Xarakterli Bildiriş Modalı -->
+        <div class="info-card">
+            <h4>Yükləmə portalı necə işləyir?</h4>
+            <ul>
+                <li>WhatsApp vasitəsilə əldə etdiyiniz unikal kodu daxil edin.</li>
+                <li>Hər kod yalnız <b>bir dəfə</b> istifadə oluna bilər.</li>
+                <li>Təsdiqdən sonra e-kitab avtomatik yüklənəcək.</li>
+            </ul>
         </div>
+    </div>
+
+    <div class="container">
+        <h1>E-Kitab yüklə</h1>
+        <p>WhatsApp vasitəsilə əldə etdiyiniz unikal birdəfəlik giriş kodunu aşağıya daxil edin.</p>
+        
+        <div class="input-group">
+            <input type="text" id="userCode" placeholder="GNL-XXXX">
+        </div>
+        
+        <button onclick="verifyAndDownload()" id="downloadBtn">Yükləməni Başlat</button>
+        <div id="message"></div>
     </div>
 
     <div class="footer">
@@ -451,13 +404,12 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // 1. Real-time Statistika Dinləyicisi (Canlı olaraq sayğacı izləyir)
+        // Real-time Statistika Dinləyicisi
         db.collection("stats").doc("portal").onSnapshot((doc) => {
             const countElem = document.getElementById("totalDownloadsCount");
             if (doc.exists) {
                 countElem.textContent = doc.data().totalDownloads || 0;
             } else {
-                // Əgər statistika sənədi hələ yoxdursa, onu avtomatik 0 olaraq yaradırıq
                 db.collection("stats").doc("portal").set({ totalDownloads: 0 });
                 countElem.textContent = "0";
             }
@@ -500,10 +452,9 @@
                         return;
                     }
 
-                    // Kodu istifadə olunmuş kimi işarələyirik
                     await docRef.update({ used: true });
 
-                    // Statistika sayğacını (totalDownloads) 1 vahid artırırıq
+                    // Sayğacı 1 vahid artırırıq
                     await db.collection("stats").doc("portal").update({
                         totalDownloads: firebase.firestore.FieldValue.increment(1)
                     });
@@ -528,6 +479,7 @@
             }
         }
 
+        document.getElementById("userCode").getElementById("userCode")?.addEventListener?.(...); // kept clean below
         document.getElementById("userCode").addEventListener("keypress", function(e) {
             if (e.key === "Enter") {
                 verifyAndDownload();
