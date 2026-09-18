@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gunel's Story - E-Kitab Yükləmə Portalı</title>
-    <!-- Favicon PDF simvolu olaraq dəyişdirildi -->
+    <!-- Rəngli PDF Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23EF4444%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22 font-family=%22Plus Jakarta Sans, sans-serif%22>PDF</text></svg>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,25 +52,18 @@
             margin-top: 12px;
         }
 
-        /* Loqo hissəsi (mətn əvəzinə şəkil/loqo sahəsi üçün uyğunlaşdırıldı) */
+        /* Yalnız loqo sahəsi və böyüdülmüş ölçü */
         .logo-container {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
         }
 
         .logo-img {
-            height: 40px;
+            height: 64px; /* Loqonun ölçüsü bir qədər böyüdüldü */
             width: auto;
             object-fit: contain;
-        }
-
-        .logo-text {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-lux);
-            letter-spacing: -0.025em;
+            border-radius: 12px;
         }
 
         /* Minimalist Tailwind tərzi kart dizaynı */
@@ -169,9 +162,7 @@
 
     <div class="header">
         <div class="logo-container">
-            <!-- Loqo şəklinizi əlavə etmək üçün 'src' hissəsinə fayl yolunu yazın (məsələn: logo.png) -->
             <img src="logo.jpg" alt="Gunel's Story Logo" class="logo-img" onerror="this.style.display='none'">
-            <span class="logo-text">Gunel's Story</span>
         </div>
     </div>
 
