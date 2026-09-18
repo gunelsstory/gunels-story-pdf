@@ -15,7 +15,6 @@
         :root {
             --bg-base: #F8FAFC;
             --primary-lux: #0F172A;
-            --accent-gold: #3B82F6;
             --text-main: #0F172A;
             --text-muted: #64748B;
             --white: #ffffff;
@@ -25,7 +24,7 @@
             --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
             --radius-lg: 16px;
             --radius-sm: 8px;
-            --transition: all .2s ease-in-out;
+            --transition: all .25s ease-in-out;
         }
 
         * {
@@ -50,23 +49,73 @@
         .header {
             text-align: center;
             margin-top: 12px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Yalnız loqo sahəsi və böyüdülmüş ölçü */
+        /* Loqo sahəsi (daha böyük ölçü) */
         .logo-container {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 20px;
         }
 
         .logo-img {
-            height: 64px; /* Loqonun ölçüsü bir qədər böyüdüldü */
+            height: 96px; /* Loqonun ölçüsü nəzərəçarpacaq dərəcədə böyüdüldü */
             width: auto;
             object-fit: contain;
-            border-radius: 12px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
         }
 
-        /* Minimalist Tailwind tərzi kart dizaynı */
+        /* Məlumat Xarakterli Bildiriş Modalı (Mobil Uyğun) */
+        .info-card {
+            background: linear-gradient(135deg, #EFF6FF 0%, #F1F5F9 100%);
+            border: 1px solid #BFDBFE;
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: left;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-card h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1D4ED8;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-card ul {
+            list-style: none;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .info-card li {
+            margin-bottom: 4px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .info-card li::before {
+            content: "•";
+            color: #3B82F6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Əsas Konteyner */
         .container {
             background: var(--white);
             border: 1px solid #E2E8F0;
@@ -96,15 +145,27 @@
 
         .input-group {
             position: relative;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            /* Animasiyalı sarı çərçivə effekti */
+            padding: 2px;
+            background: linear-gradient(90deg, #F59E0B, #FBBF24, #D97706, #F59E0B);
+            background-size: 300% 300%;
+            animation: borderGlow 4s ease infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         input {
             width: 100%;
             padding: 12px 16px;
             background: var(--white);
-            border: 1px solid #CBD5E1;
-            border-radius: var(--radius-sm);
+            border: none;
+            border-radius: 8px;
             color: var(--text-main);
             font-size: 1rem;
             text-align: center;
@@ -112,35 +173,37 @@
             font-weight: 600;
             text-transform: uppercase;
             transition: var(--transition);
-            box-shadow: var(--shadow-sm);
         }
 
         input:focus {
             outline: none;
-            border-color: #2563EB;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            background: #FFFBEB;
         }
 
+        /* Rəngarəng Yükləmə Düyməsi */
         button {
-            background: var(--primary-lux);
+            background: linear-gradient(135deg, #6366F1 0%, #EC4899 50%, #F59E0B 100%);
+            background-size: 200% auto;
             color: white;
             border: none;
-            padding: 12px 16px;
+            padding: 14px 16px;
             width: 100%;
             border-radius: var(--radius-sm);
             cursor: pointer;
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
             transition: var(--transition);
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
         }
 
         button:hover {
-            background: #1E293B;
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
         }
 
         button:active {
-            transform: scale(0.99);
+            transform: translateY(0);
         }
 
         #message {
@@ -154,7 +217,7 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 0.75rem;
-            margin-bottom: 8px;
+            margin-top: 16px;
         }
     </style>
 </head>
@@ -163,6 +226,16 @@
     <div class="header">
         <div class="logo-container">
             <img src="logo.jpg" alt="Gunel's Story Logo" class="logo-img" onerror="this.style.display='none'">
+        </div>
+
+        <!-- Məlumat Xarakterli Bildiriş Modalı -->
+        <div class="info-card">
+            <h4>💡 Portal Necə İşləyir?</h4>
+            <ul>
+                <li>WhatsApp vasitəsilə əldə etdiyiniz kodu daxil edin.</li>
+                <li>Hər kod yalnız **bir dəfə** istifadə oluna bilər.</li>
+                <li>Təsdiqdən sonra e-kitab avtomatik yüklənəcək.</li>
+            </ul>
         </div>
     </div>
 
@@ -174,7 +247,7 @@
             <input type="text" id="userCode" placeholder="GNL-XXXX">
         </div>
         
-        <button onclick="verifyAndDownload()" id="downloadBtn">Yükləməni Başlat</button>
+        <button onclick="verifyAndDownload()" id="downloadBtn">Yükləməni Başlat 🚀</button>
         <div id="message"></div>
     </div>
 
